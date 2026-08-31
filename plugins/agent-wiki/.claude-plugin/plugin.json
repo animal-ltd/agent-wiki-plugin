@@ -1,0 +1,13 @@
+{
+  "name": "agent-wiki",
+  "description": "Connect your agent-wiki project memory: read, search, and update private markdown wikis at getagentwiki.com over MCP.",
+  "version": "0.1.0",
+  "author": {
+    "name": "animal-ltd",
+    "email": "hello@getagentwiki.com"
+  },
+  "homepage": "https://getagentwiki.com",
+  "repository": "https://github.com/animal-ltd/agent-wiki-plugin",
+  "license": "MIT",
+  "keywords": ["memory", "wiki", "notes", "markdown", "mcp", "knowledge-base"]
+}
