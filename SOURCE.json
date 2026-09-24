@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/animal-ltd/agent-wiki",
-  "sourceSha": "ba920160240a4fae88991b9819a0343a6cfeff32",
-  "version": "0.2.0",
-  "firstPromptChecksum": "205b97d92da388ea05ca7202c915c80ec73676407f29bfaf41cc11437dec5a46",
+  "sourceSha": "f513b3c7f4b20e63c99d7da6001e6eb6977d4ce0",
+  "version": "0.3.0",
+  "firstPromptChecksum": "d5d12f576fbd0b17d8d729698dd5b99c7cfdd5ce62f9838ff06fa210c667c979",
   "files": {
-    ".claude-plugin/marketplace.json": "03fe364e47a92fcc5f42c2eb39e0450e7c2d23a5a62796962b351adef7ab7cb4",
+    ".claude-plugin/marketplace.json": "7328dc03b9bc6ccf08234c2b8f23c48dd7388b8fcc333815c56a375c3bf41c1e",
     "LICENSE": "93878750da3e55c5a575f1edeb5e790104c344a7220123b51ba62f256101ab14",
-    "README.md": "f0be421d0d8ec7eed8c193d5511b71421d6591474cfb029f4a61a65acdb5cb08",
-    "plugins/agent-wiki/.claude-plugin/plugin.json": "664c1d46b8c36b9db163d6681a50ec982c66390612145ef5a4551bb55a4ae373",
+    "README.md": "7d0e20dd6a8a8baf7b6acae2207aee8cf3f1f25075c6d137dbcd836d3f30603d",
+    "plugins/agent-wiki/.claude-plugin/plugin.json": "808d5f6d5b6e33c48dfda341d30fc142ad3cebdcc7f790d892b0b03d1b79b946",
     "plugins/agent-wiki/.mcp.json": "be8683f7b85e01fbb8a1eae3428183c1ec9b7109f55f9544100326305640b57e",
-    "plugins/agent-wiki/skills/setup/SKILL.md": "c62b24cc9e306fa709b21e52727a612148e9adb36cb318a3f8d9494a4385d6eb",
+    "plugins/agent-wiki/skills/setup/SKILL.md": "016208caebc62a1b55ad5d53096bd7ab0b7921a002659609b23c6dba0e1f62ca",
     "scripts/verify-plugin-package.mjs": "e81c6c28bd3fad18eac955f2412f53c1e79a94f83f44bedce242c025034f5a75"
   },
-  "packageChecksum": "a3dd69e1b97f7c9e2aa39984a4578e0b36aee6a212919e23cc00d4d1076da871"
+  "packageChecksum": "4d4e5e940f261b2e5457c914d5e45b31dbf7fc3414804b0ab366443024f3f2df"
 }

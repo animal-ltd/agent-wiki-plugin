@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Hosted markdown memory for agents \u2014 private project wikis over MCP.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "agent-wiki",
       "source": "./plugins/agent-wiki",
       "description": "Connect your agent-wiki project memory: read, search, and update private markdown wikis at getagentwiki.com over MCP.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "animal-ltd",
         "email": "hello@getagentwiki.com"

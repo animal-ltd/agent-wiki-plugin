@@ -1,6 +1,6 @@
 # agent-wiki — Claude Code plugin
 
-[agent-wiki](https://getagentwiki.com) gives agents private markdown project memory over MCP. This public repository distributes version **0.2.0**, including the explicitly invoked `/agent-wiki:setup` skill and a remote server at `https://getagentwiki.com/mcp`. It bundles no credentials, dependencies, or automatic write hooks.
+[agent-wiki](https://getagentwiki.com) gives agents private markdown project memory over MCP. This public repository distributes version **0.3.0**, including the explicitly invoked `/agent-wiki:setup` skill and a remote server at `https://getagentwiki.com/mcp`. It bundles no credentials, dependencies, or automatic write hooks.
 
 ## Install
 
@@ -21,7 +21,7 @@ The interactive equivalents are `/plugin marketplace add animal-ltd/agent-wiki-p
 
 Use `--scope project` or `--scope local` only when intended. Installing in a project directory with `--scope user` still installs across projects. Installation scope does not grant wiki access. The bundled endpoint is account-wide; do not replace an existing single-wiki connection without choosing that broader connection yourself.
 
-Restart Claude Code. In `/plugin`, check Installed for enabled `agent-wiki` version `0.2.0` and inspect Errors if `/agent-wiki:setup` is missing. A client that requests `/reload-plugins` supports that alternative; follow its reload instructions. Shell installation does not update an already-running conversation.
+Restart Claude Code. In `/plugin`, check Installed for enabled `agent-wiki` version `0.3.0` and inspect Errors if `/agent-wiki:setup` is missing. A client that requests `/reload-plugins` supports that alternative; follow its reload instructions. Shell installation does not update an already-running conversation.
 
 ## Authenticate, then run setup
 
@@ -33,7 +33,9 @@ Once `/mcp` shows the connection and tools, invoke:
 /agent-wiki:setup
 ```
 
-You may supply a wiki name or id. The skill confirms access with `list_wikis`, asks if selection is ambiguous, checks the wiki's state, and reads at most three orientation pages. It asks for one real decision and waits. After your answer it searches before writing, preserves existing content with current versions, then rereads and searches the result. No examples are saved as decisions.
+You may supply a wiki name or id. The skill confirms access with `list_wikis`, asks if selection is ambiguous, checks the wiki's state, and reads at most three orientation pages. It configures private project instructions and a read-only retrieval hook using that existing connection. Native hooks require Claude Code 2.1.282 or newer. Before enabling retrieval, it explains that each current prompt, including pasted text, is sent transiently for retrieval and lets you choose instructions-only instead. The hook adds no separate transcript, local-path, or credential fields, but all text included in the prompt is sent. Agent-wiki does not retain that prompt text in its logs; client conversation history is separate. Existing settings, permissions, and other hooks are preserved.
+
+Configuration does not require saving a new decision. If one is needed, the assistant shows the exact note and destination and waits for your approval. It uses a stable write request ID, preserves current versions, verifies the saved revision, and searches the result. Existing decisions are not saved again. No examples are saved as decisions.
 
 If credentials expire, return to `/mcp` and re-authenticate the selected connection. If permission is read-only, access is missing, a tool call is refused, or you cancel, setup reports what remains incomplete and does not bypass the failure. A rerun checks for an already-saved decision rather than duplicating it. A save followed by failed verification is reported as unverified, not complete.
 
@@ -45,7 +47,7 @@ Claude.ai inheritance depends on the active login method. Check `/status`: API-k
 
 Without the plugin, a direct connection remains available via `claude mcp add --transport http agent-wiki https://getagentwiki.com/mcp`; its default local scope is for you in this project. It does not install the setup skill. Check existing connections first, then authenticate separately.
 
-## Upgrade from 0.1.0
+## Upgrade from an earlier release
 
 Use the same scope as the existing installation (shown in `/plugin`):
 
@@ -54,15 +56,17 @@ claude plugin marketplace update agent-wiki
 claude plugin update agent-wiki@agent-wiki --scope user
 ```
 
-Restart Claude Code, check version `0.2.0` in `/plugin`, and confirm `/agent-wiki:setup` is available before using it. Refreshing the catalog alone is not a plugin update. The plugin version controls cache updates; do not edit cached runtime files. If the old version remains, inspect the update output, marketplace source, selected scope, and `/plugin` Errors. Do not erase the whole Claude configuration or credential cache.
+Restart Claude Code, check version `0.3.0` in `/plugin`, and confirm `/agent-wiki:setup` is available before using it. Refreshing the catalog alone is not a plugin update. The plugin version controls cache updates; do not edit cached runtime files. If the old version remains, inspect the update output, marketplace source, selected scope, and `/plugin` Errors. Do not erase the whole Claude configuration or credential cache.
 
-These are the supported commands in Claude Code 2.1.263; see the [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [installation guide](https://code.claude.com/docs/en/discover-plugins). Client acceptance receipts, including tested versions and public release SHAs, are tracked in [#83](https://github.com/animal-ltd/agent-wiki/issues/83). Source checks alone do not prove authentication or a successful setup.
+These are the supported commands in Claude Code 2.1.282; see the [plugin reference](https://code.claude.com/docs/en/plugins-reference) and [installation guide](https://code.claude.com/docs/en/discover-plugins). Client acceptance receipts, including tested versions and public release SHAs, are tracked in [#83](https://github.com/animal-ltd/agent-wiki/issues/83). Source checks alone do not prove authentication or a successful setup.
 
 ## Rollback
 
 To stop using this version, disable it in `/plugin` and restart. This does not delete wiki content; a direct connection can remain in use.
 
-For the previous public 0.1.0 artifact, first note your marketplace source and installation scope. This marketplace contains only agent-wiki. Removing it uninstalls its plugins, so do this only when you choose to replace that installation:
+The retrieval hook is project-local and remains independent of plugin enablement. To stop automatic retrieval, ask Claude to remove only the recognized agent-wiki UserPromptSubmit hook from `.claude/settings.local.json`, preserving other hooks, permissions, and the existing connection. Keep or deliberately remove the marked instructions separately.
+
+For the earlier public 0.1.0 artifact, first note your marketplace source and installation scope. This marketplace contains only agent-wiki. Removing it uninstalls its plugins, so do this only when you choose to replace that installation:
 
 ```sh
 git clone https://github.com/animal-ltd/agent-wiki-plugin.git agent-wiki-plugin-rollback

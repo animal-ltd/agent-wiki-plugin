@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "agent-wiki",
   "description": "Connect your agent-wiki project memory: select, read, search, and update private markdown wikis at getagentwiki.com over MCP.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "animal-ltd",
     "email": "hello@getagentwiki.com"
