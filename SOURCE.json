@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/animal-ltd/agent-wiki",
-  "sourceSha": "f513b3c7f4b20e63c99d7da6001e6eb6977d4ce0",
+  "sourceSha": "c055dbb2a0027dc6f76d0be6e390d5ec23885c63",
   "version": "0.3.0",
   "firstPromptChecksum": "d5d12f576fbd0b17d8d729698dd5b99c7cfdd5ce62f9838ff06fa210c667c979",
   "files": {
